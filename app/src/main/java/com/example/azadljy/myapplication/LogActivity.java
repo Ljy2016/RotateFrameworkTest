@@ -1,6 +1,8 @@
 package com.example.azadljy.myapplication;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
@@ -22,9 +24,9 @@ import java.io.InputStreamReader;
 
 public class LogActivity extends AppCompatActivity {
     TextView textView;
-    String[] running = new String[]{"logcat", "-d", "dalvikvm"};
+    String[] running = new String[]{"logcat", "-d", "time"};
     Process process;
-    String currentLog;
+    String currentLog = "123";
     InputStreamReader reader;
     BufferedReader bufferedReader;
     StringBuffer stringBuffer = new StringBuffer();
@@ -35,6 +37,10 @@ public class LogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log);
         textView = (TextView) findViewById(R.id.tv_showlog);
         textView.setMovementMethod(ScrollingMovementMethod.getInstance());
+    }
+
+    public void writeLog(View v) {
+        Log.e("TAG", "writeLog:ljytest----草莓味的 ");
     }
 
     public void getLog2(View view) {
@@ -82,44 +88,113 @@ public class LogActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void getLog(View view) throws IOException {
-        view.setVisibility(View.GONE);
-
+    public void getLog1(View view) {
+        Log.e("TAG", "getLog:ljytest ");
+//        view.setVisibility(View.GONE);
+        try {
+            process = Runtime.getRuntime().exec(running);
+        } catch (IOException e) {
+            Log.e("TAG", "getLog:出错了 ");
+            e.printStackTrace();
+        }
         new Thread(new Runnable() {
 
             @Override
             public void run() {
-                while (true) {
-                    try {
-                        process = Runtime.getRuntime().exec(running);
-//                        if (reader == null) {
-                        reader = new InputStreamReader(process.getInputStream());
+                Log.e("TAG", "getLog:线程开始 ");
+                try {
+//                    if (reader == null) {
+                    reader = new InputStreamReader(process.getInputStream());
+//                    }
+//                    if (bufferedReader == null) {
+                    bufferedReader = new BufferedReader(reader);
+//                    }
+                    while ((currentLog = bufferedReader.readLine()) != null) {
+                        Log.e("TAG", "getLog:读取流的数据 ");
+//                        if (currentLog.indexOf("ljytest") > 0) {
+//                            Log.e("TAG", "得到符合条件的日志 ");
+//                            final String log = currentLog + "\n";
+//                            runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    textView.append(log);
+////                            stringBuffer.delete(0, stringBuffer.length());
+////                                    int offset = textView.getLineCount() * textView.getLineHeight();
+////                                    if (offset > textView.getHeight()) {
+////                                        textView.scrollTo(0, offset - textView.getHeight());
+////                                    }
+//                                }
+//                            });
+////                        stringBuffer.append(currentLog);
+////                        stringBuffer.append("\n");
 //                        }
-//                        if (bufferedReader == null) {
-                        bufferedReader = new BufferedReader(reader);
-//                        }
-                        while ((currentLog = bufferedReader.readLine()) != null) {
-                            stringBuffer.append(currentLog);
-                            stringBuffer.append("\n");
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                textView.append(stringBuffer.toString());
-                                stringBuffer.delete(0, stringBuffer.length());
-                                int offset = textView.getLineCount() * textView.getLineHeight();
-                                if (offset > textView.getHeight()) {
-                                    textView.scrollTo(0, offset - textView.getHeight());
-                                }
-                            }
-                        });
-//                        bufferedReader.notify();
-                        Thread.sleep(1000);
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
+                    Log.e("TAG", "线程运行完毕 ！！！");
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textView.append(stringBuffer.toString());
+//                            stringBuffer.delete(0, stringBuffer.length());
+//                            int offset = textView.getLineCount() * textView.getLineHeight();
+//                            if (offset > textView.getHeight()) {
+//                                textView.scrollTo(0, offset - textView.getHeight());
+//                            }
+//                        }
+//                    });
+//                      bufferedReader.notify();
+//                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    Log.e("TAG", "出错了 ");
+                    e.printStackTrace();
                 }
             }
+
         }).start();
     }
+
+    public void getLog(View v) {
+        new AsyncTask<Void, String, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    process = Runtime.getRuntime().exec("logcat -v time");
+                    InputStream is = process.getInputStream();
+                    InputStreamReader reader = new InputStreamReader(is);
+                    BufferedReader bufferedReader = new BufferedReader(
+                            reader);
+
+                    String line = "";
+
+                        while ((line = bufferedReader.readLine()) != null) {
+                            publishProgress(line);
+                        }
+
+//                    if (bufferedReader != null) {
+//                        bufferedReader.close();
+//                    }
+//                    if (reader != null) {
+//                        reader.close();
+//                    }
+//                    if (is != null) {
+//                        is.close();
+//                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onProgressUpdate(String... values) {
+//                super.onProgressUpdate(values);
+                String line = values[0] + "\n";
+                textView.append(line);
+            }
+
+        }.execute();
+    }
+
+
 }

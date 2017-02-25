@@ -8,16 +8,14 @@
     tools:context="com.example.azadljy.myapplication.MainActivity">
 
 
-
-        <TextView
-            android:id="@+id/tv_showlog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="你好"
-            android:textSize="20sp"
-            android:scrollbars="vertical"
-            android:fadeScrollbars="false"
-            />
+    <TextView
+        android:id="@+id/tv_showlog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="false"
+        android:scrollbars="vertical"
+        android:text="你好"
+        android:textSize="20sp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -26,4 +24,16 @@
         android:text="开始"
 
         />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="43dp"
+        android:layout_marginRight="43dp"
+        android:onClick="writeLog"
+        android:text="来条日志，草莓味的" />
 </RelativeLayout>
