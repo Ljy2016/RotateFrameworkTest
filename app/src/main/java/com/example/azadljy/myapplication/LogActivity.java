@@ -9,9 +9,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
 import org.w3c.dom.Text;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -158,15 +156,14 @@ public class LogActivity extends AppCompatActivity {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    process = Runtime.getRuntime().exec("logcat -v time");
+                    process = Runtime.getRuntime().exec("logcat -v raw  *:E");
                     InputStream is = process.getInputStream();
                     InputStreamReader reader = new InputStreamReader(is);
                     BufferedReader bufferedReader = new BufferedReader(
                             reader);
 
                     String line = "";
-
-                        while ((line = bufferedReader.readLine()) != null) {
+                    while ((line = bufferedReader.readLine()) != null) {
                             publishProgress(line);
                         }
 
@@ -192,9 +189,6 @@ public class LogActivity extends AppCompatActivity {
                 String line = values[0] + "\n";
                 textView.append(line);
             }
-
         }.execute();
     }
-
-
 }
