@@ -12,18 +12,25 @@
         android:id="@+id/tv_showlog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button2"
         android:fadeScrollbars="false"
         android:scrollbars="vertical"
-        android:text="你好"
+        android:text="点击开始，showLog"
         android:textSize="20sp" />
 
     <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"
         android:onClick="getLog"
-        android:text="开始"
-
-        />
+        android:text="开始" />
 
     <Button
         android:id="@+id/button"
@@ -36,4 +43,12 @@
         android:layout_marginRight="43dp"
         android:onClick="writeLog"
         android:text="来条日志，草莓味的" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_showlog"
+        android:layout_marginTop="13dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></android.support.v7.widget.RecyclerView>
 </RelativeLayout>
