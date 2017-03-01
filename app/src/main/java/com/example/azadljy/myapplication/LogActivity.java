@@ -9,11 +9,21 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.support.v7.widget.RecyclerView;
+
+import com.example.azadljy.myapplication.adapter.LogAdapter;
+import com.example.azadljy.myapplication.model.LogModel;
+
 import org.w3c.dom.Text;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import android.support.v7.widget.LinearLayoutManager;
+import static com.example.azadljy.myapplication.R.id.rl_showlog;
 
 /**
  * 作者：Ljy on 2017/2/24.
@@ -28,13 +38,37 @@ public class LogActivity extends AppCompatActivity {
     InputStreamReader reader;
     BufferedReader bufferedReader;
     StringBuffer stringBuffer = new StringBuffer();
+    private List<LogModel> logModels;
+    private RecyclerView recyclerView;
+    private LogAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
         textView = (TextView) findViewById(R.id.tv_showlog);
+        recyclerView = (RecyclerView) findViewById(R.id.rl_showlog);
         textView.setMovementMethod(ScrollingMovementMethod.getInstance());
+        logModels = new ArrayList<>();
+
+        adapter = new LogAdapter() {
+            @Override
+            public LogModel getModel(int position) {
+                return logModels.get(position);
+            }
+
+            @Override
+            public int setItemViewType(int position) {
+                return R.layout.logitem;
+            }
+
+            @Override
+            public int getItemCount() {
+                return logModels.size();
+            }
+        };
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void writeLog(View v) {
@@ -156,7 +190,7 @@ public class LogActivity extends AppCompatActivity {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    process = Runtime.getRuntime().exec("logcat -v raw  *:E");
+                    process = Runtime.getRuntime().exec("logcat -v raw ");
                     InputStream is = process.getInputStream();
                     InputStreamReader reader = new InputStreamReader(is);
                     BufferedReader bufferedReader = new BufferedReader(
@@ -164,18 +198,19 @@ public class LogActivity extends AppCompatActivity {
 
                     String line = "";
                     while ((line = bufferedReader.readLine()) != null) {
-                            publishProgress(line);
-                        }
+                        Log.e("TAG", "doInBackground: 1");
+                        publishProgress(line);
+                    }
 
-//                    if (bufferedReader != null) {
-//                        bufferedReader.close();
-//                    }
-//                    if (reader != null) {
-//                        reader.close();
-//                    }
-//                    if (is != null) {
-//                        is.close();
-//                    }
+                    if (bufferedReader != null) {
+                        bufferedReader.close();
+                    }
+                    if (reader != null) {
+                        reader.close();
+                    }
+                    if (is != null) {
+                        is.close();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -186,8 +221,15 @@ public class LogActivity extends AppCompatActivity {
             @Override
             protected void onProgressUpdate(String... values) {
 //                super.onProgressUpdate(values);
-                String line = values[0] + "\n";
-                textView.append(line);
+                String line = values[0] ;
+                String time = "17:21";
+                LogModel model = new LogModel();
+                model.setLogTime(time);
+                model.setLogContent(line);
+                logModels.add(model);
+                adapter.notifyDataSetChanged();
+//                recyclerView.smoothScrollToPosition(logModels.size()-1);
+//                textView.append(line);
             }
         }.execute();
     }

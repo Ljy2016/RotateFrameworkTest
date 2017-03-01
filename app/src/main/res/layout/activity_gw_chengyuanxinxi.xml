@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--<include-->
+    <!--layout="@layout/include_white_head"/>-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26px"
+                android:background="@color/cl_white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="25px"
+                    android:text="旅客姓名"
+                    android:textColor="@color/cl_333"
+                    android:textSize="30px"
+                    android:textStyle="bold" />
+
+                <View
+                    style="@style/title_view"
+                    android:layout_marginTop="25px" />
+
+                <LinearLayout
+                    android:id="@+id/ll_04"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="@color/cl_white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:text="中文姓名"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <EditText
+                        android:id="@+id/et_ly_xingming"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="70px"
+                        android:hint="与证件姓名一致"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="@color/cl_white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:text="英文姓\nLast name"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <EditText
+                        android:id="@+id/et_ly_yingwenxing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="52px"
+                        android:hint="如:林明明，填:LIN"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="@color/cl_white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:text="英文名\nFirst name"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <EditText
+                        android:id="@+id/et_ly_yingwenming"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="52px"
+                        android:hint="如:林明明，填:MINGMING"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26px"
+                android:background="@color/cl_white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="25px"
+                    android:text="证件信息"
+                    android:textColor="@color/cl_333"
+                    android:textSize="30px"
+                    android:textStyle="bold" />
+
+                <View
+                    style="@style/title_view"
+                    android:layout_marginTop="25px" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_05"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="@color/cl_white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:text="证件类型"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <TextView
+                        android:id="@+id/et_ly_zhengjianleixing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="70px"
+                        android:layout_toRightOf="@+id/tv_01"
+                        android:text="身份证"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <ImageView
+                        android:layout_width="35px"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="30px"
+                        android:src="@mipmap/ic_wode_zd_xx" />
+                </RelativeLayout>
+
+                <View
+                    style="@style/title_view"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px" />
+
+                <LinearLayout
+                    android:id="@+id/ll_06"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="@color/cl_white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:text="证件号码"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <EditText
+                        android:id="@+id/et_ly_zhangjianhaoma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="70px"
+                        android:hint="所持证件号码"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_13"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="@color/cl_white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_gj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:text="国籍         "
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <TextView
+                        android:id="@+id/tv_ly_guoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="70px"
+                        android:layout_toRightOf="@+id/tv_gj"
+                        android:hint="请选择"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <ImageView
+                        android:layout_width="35px"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="30px"
+                        android:src="@mipmap/ic_wode_zd_xx" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26px"
+                android:background="@color/cl_white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="25px"
+                    android:text="其他信息"
+                    android:textColor="@color/cl_333"
+                    android:textSize="30px"
+                    android:textStyle="bold" />
+
+                <View
+                    style="@style/title_view"
+                    android:layout_marginTop="25px" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_07"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="@color/cl_white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:text="性别"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="30px"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@null"
+                            android:drawablePadding="24px"
+                            android:drawableRight="@drawable/xuanzexingbei"
+                            android:text="男" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="74px"
+                            android:button="@null"
+                            android:drawablePadding="24px"
+                            android:drawableRight="@drawable/xuanzexingbei"
+                            android:text="女" />
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/title_view"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="@color/cl_white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:text="出生日期"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <TextView
+                        android:id="@+id/tv_ly_chushengriqi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="70px"
+                        android:layout_toRightOf="@+id/tv_birthday"
+                        android:hint="请选择您的出生日期"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <ImageView
+                        android:layout_width="35px"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="30px"
+                        android:src="@mipmap/ic_wode_zd_xx" />
+                </RelativeLayout>
+
+                <View
+                    style="@style/title_view"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px" />
+
+                <LinearLayout
+                    android:id="@+id/ll_08"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="@color/cl_white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginRight="30px"
+                        android:text="联系方式"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+
+                    <EditText
+                        android:id="@+id/et_ly_lianxifangshi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="70px"
+                        android:hint="至少输入一位出行人的手机号码"
+                        android:textColor="@color/cl_333"
+                        android:textSize="32px" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="90px"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:layout_marginTop="70px"
+                android:background="@color/cl_ff5A5A_red"
+                android:text="保存"
+                android:textColor="@color/cl_white"
+                android:textSize="32px" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

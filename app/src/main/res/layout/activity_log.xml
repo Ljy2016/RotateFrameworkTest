@@ -45,8 +45,10 @@
         android:text="来条日志，草莓味的" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rl_showlog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="vertical"
         android:layout_below="@+id/tv_showlog"
         android:layout_marginTop="13dp"
         android:layout_alignParentLeft="true"

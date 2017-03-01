@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@mipmap/kongyuan" android:state_checked="false"  />
+    <item android:drawable="@mipmap/hongyuan" android:state_checked="true" />
+</selector>

@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/mylibrary0" />
             <option value="$PROJECT_DIR$/mylibrary1" />
             <option value="$PROJECT_DIR$/mylibrary2" />
+            <option value="$PROJECT_DIR$/slideDateTimePicker" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

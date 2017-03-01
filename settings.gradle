@@ -1,1 +1,1 @@
-include ':app', ':mylibrary0', ':mylibrary1', ':mylibrary2'
+include ':app', ':mylibrary0', ':mylibrary1', ':mylibrary2', ':slideDateTimePicker'
